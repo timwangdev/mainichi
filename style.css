@@ -1,0 +1,111 @@
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #333;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card {
+    height: 580px;
+    width: 410px;
+    position: relative;
+    background-color: blueviolet;
+    border-radius: 4px;
+    box-shadow: #2c2c2c 2px 2px 8px 2px;
+}
+
+.img-wrapper {
+    padding: 2em;
+}
+
+#card-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 320px;
+    width: 100%;
+}
+
+#card .text-box {
+    padding: 2em;
+    width: 100%;
+    color: #222;
+    position: absolute;
+    bottom: 0;
+}
+
+#card h1 {
+    margin: 0;
+    font-family: Arial, 'MS Gothic', 'Yu Gothic', 'MS PGothic', 'Hiragino Kaku Gothic', 'Sazanami Gothic', sans-serif;
+}
+
+#card p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+#card #meaning {
+    border-top: 1px solid #000;
+    margin-top: .4em;
+    padding-top: .4em;
+    padding-left: .4em;
+}
+
+#card #hiragana {
+    font-size: 1.8em;
+}
+
+#card #kanji {
+    font-size: 1.8em;
+}
+
+#card #speaker {
+    margin: 0 .5em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url('images/volume.png') center no-repeat;
+    background-size: contain;
+}
+
+#card #romaji {
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+}
+
+#card #pronunciation {
+    visibility: hidden;
+    cursor: pointer;
+}
+
+#card .text-box:hover #pronunciation {
+    visibility: visible;
+}
+
+#card #hanzi {
+    font-size: 1.5em;
+    font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+}
+
+#card #english {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+footer {
+    flex: 0;
+}

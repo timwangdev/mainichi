@@ -1,0 +1,17 @@
+{
+   "author": "Yao Wang",
+   "chrome_url_overrides": {
+      "newtab": "index.html"
+   },
+   "description": "Learn new Japanese word in new tab.",
+   "manifest_version": 2,
+   "name": "Mainichi Tango",
+   "icons": {
+      "128": "icon-128.png",
+      "16": "icon-16.png",
+      "64": "icon-64.png"
+   },
+   "permissions": [ "tabs" ],
+   "short_name": "mainichi_tango",
+   "version": "1.0.0"
+}
