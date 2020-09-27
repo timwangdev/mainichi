@@ -22,6 +22,8 @@ body {
     height: 580px;
     width: 410px;
     position: relative;
+    top: -16px;
+    margin: 16px;
     background-color: blueviolet;
     border-radius: 4px;
     box-shadow: #2c2c2c 2px 2px 8px 2px;
@@ -77,7 +79,7 @@ body {
     display: inline-block;
     width: 1em;
     height: 1em;
-    background: url('images/volume.png') center no-repeat;
+    background: url('images/mute.png') center no-repeat;
     background-size: contain;
 }
 
@@ -109,3 +111,35 @@ body {
 footer {
     flex: 0;
 }
+
+#snackbar {
+    visibility: hidden;
+    width: fit-content;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 4px;
+    margin: auto;
+    padding: 12px;
+    position: fixed;
+    z-index: 10;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 24px; opacity: 1;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 24px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

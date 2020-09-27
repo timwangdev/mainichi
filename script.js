@@ -31,12 +31,29 @@ document.getElementById('english').innerText = english;
 document.getElementById('card').style.backgroundColor = window.COLORLIST[colorIdx];
 document.getElementById('card-img').style.backgroundImage = `url('images/${image}.png')`;
 
+let errorMsg = '';
+if (!window.speechSynthesis) {
+    errorMsg = 'Web Speech API is not available in your browser.';
+} else if (window.speechSynthesis.getVoices().some((voice) => voice.lang === 'ja-JP')) {
+    errorMsg = 'Japanses speech voice is not available in your browser.';
+} else {
+    document.getElementById('speaker').style.backgroundImage = `url('images/volume.png')`;
+}
+
 document.getElementById('pronunciation').addEventListener('click', () => {
-    if (!window.speechSynthesis) {
-        console.warn('Web Speech API is not available in your browser.')
-        return;
+    if (errorMsg !== '') {
+        return showSnackbar(errorMsg);
     }
-    let speech = new SpeechSynthesisUtterance(hiragana);
+    let speech = new SpeechSynthesisUtterance(kanji === '-' ? hiragana : kanji);
     speech.lang = "ja-JP";
     window.speechSynthesis.speak(speech);
 });
+
+let $snackbar = document.getElementById('snackbar');
+
+function showSnackbar(message) {
+    if ($snackbar.classList.contains('show')) return;
+    $snackbar.innerText = message;
+    $snackbar.classList.add('show')
+    setTimeout(() => $snackbar.classList.remove('show'), 5000);
+}
