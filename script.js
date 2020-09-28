@@ -32,22 +32,36 @@ document.getElementById('card').style.backgroundColor = window.COLORLIST[colorId
 document.getElementById('card-img').style.backgroundImage = `url('images/${image}.png')`;
 
 let errorMsg = '';
+let speechInited = false;
+
 if (!window.speechSynthesis) {
     errorMsg = 'Web Speech API is not available in your browser.';
-} else if (window.speechSynthesis.getVoices().some((voice) => voice.lang === 'ja-JP')) {
-    errorMsg = 'Japanses speech voice is not available in your browser.';
 } else {
-    document.getElementById('speaker').style.backgroundImage = `url('images/volume.png')`;
+    setupSpeechSynthesis();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = setupSpeechSynthesis;
+    }
 }
 
-document.getElementById('pronunciation').addEventListener('click', () => {
-    if (errorMsg !== '') {
-        return showSnackbar(errorMsg);
+function setupSpeechSynthesis() {
+    if (speechInited) {
+        return;
     }
-    let speech = new SpeechSynthesisUtterance(kanji === '-' ? hiragana : kanji);
-    speech.lang = "ja-JP";
-    window.speechSynthesis.speak(speech);
-});
+    if (!window.speechSynthesis.getVoices().some((voice) => voice.lang === 'ja-JP')) {
+        errorMsg = 'Japanses speech voice is currently not available in your browser.';
+        return;
+    }
+    document.getElementById('speaker').style.backgroundImage = `url('images/volume.png')`;
+    document.getElementById('pronunciation').addEventListener('click', () => {
+        if (errorMsg !== '') {
+            return showSnackbar(errorMsg);
+        }
+        let speech = new SpeechSynthesisUtterance(kanji === '-' ? hiragana : kanji);
+        speech.lang = "ja-JP";
+        window.speechSynthesis.speak(speech);
+    });
+    speechInited = true;
+}
 
 let $snackbar = document.getElementById('snackbar');
 
