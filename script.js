@@ -51,6 +51,7 @@ function setupSpeechSynthesis() {
         errorMsg = 'Japanses speech voice is currently not available in your browser.';
         return;
     }
+    errorMsg = '';
     document.getElementById('speaker').style.backgroundImage = `url('images/volume.png')`;
     document.getElementById('pronunciation').addEventListener('click', () => {
         if (errorMsg !== '') {
