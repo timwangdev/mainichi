@@ -31,7 +31,7 @@ document.getElementById('english').innerText = english;
 document.getElementById('card').style.backgroundColor = window.COLORLIST[colorIdx];
 document.getElementById('card-img').style.backgroundImage = `url('images/${image}.png')`;
 
-let errorMsg = '';
+let errorMsg = 'Web Speech API has not been initiated.';
 let speechInited = false;
 
 if (!window.speechSynthesis) {
@@ -43,6 +43,15 @@ if (!window.speechSynthesis) {
     }
 }
 
+document.getElementById('pronunciation').addEventListener('click', () => {
+    if (errorMsg) {
+        return showSnackbar(errorMsg);
+    }
+    let speech = new SpeechSynthesisUtterance(kanji === '-' ? hiragana : kanji);
+    speech.lang = "ja-JP";
+    window.speechSynthesis.speak(speech);
+});
+
 function setupSpeechSynthesis() {
     if (speechInited) {
         return;
@@ -51,22 +60,15 @@ function setupSpeechSynthesis() {
         errorMsg = 'Japanses speech voice is currently not available in your browser.';
         return;
     }
-    errorMsg = '';
     document.getElementById('speaker').style.backgroundImage = `url('images/volume.png')`;
-    document.getElementById('pronunciation').addEventListener('click', () => {
-        if (errorMsg !== '') {
-            return showSnackbar(errorMsg);
-        }
-        let speech = new SpeechSynthesisUtterance(kanji === '-' ? hiragana : kanji);
-        speech.lang = "ja-JP";
-        window.speechSynthesis.speak(speech);
-    });
+    errorMsg = '';
     speechInited = true;
 }
 
 let $snackbar = document.getElementById('snackbar');
 
 function showSnackbar(message) {
+    console.log('Mainichi', message);
     if ($snackbar.classList.contains('show')) return;
     $snackbar.innerText = message;
     $snackbar.classList.add('show')

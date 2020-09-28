@@ -22,7 +22,7 @@ body {
     height: 580px;
     width: 410px;
     position: relative;
-    top: -16px;
+    top: -24px;
     margin: 16px;
     background-color: blueviolet;
     border-radius: 4px;
@@ -100,7 +100,7 @@ body {
 
 #card #hanzi {
     font-size: 1.5em;
-    font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+    font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'Noto Sans CJK SC', sans-serif;
 }
 
 #card #english {
@@ -121,7 +121,7 @@ footer {
     text-align: center;
     border-radius: 4px;
     margin: auto;
-    padding: 12px;
+    padding: 8px;
     position: fixed;
     z-index: 10;
     bottom: 24px;
