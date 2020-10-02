@@ -1,0 +1,107 @@
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'Noto Sans CJK SC', sans-serif;
+    background-color: #333;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card {
+    height: fit-content;
+    width: 420px;
+    position: relative;
+    top: -24px;
+    margin: 16px;
+    background-color: blueviolet;
+    border-radius: 4px;
+    box-shadow: #2c2c2c 2px 2px 8px 2px;
+}
+
+#card .text-box {
+    padding: 2em;
+    width: 100%;
+    color: #222;
+}
+
+#card h1 {
+    margin: 0;
+}
+
+#card p {
+    margin: 0;
+    font-size: 1em;
+}
+
+#card #meaning {
+    font-size: 1.5em;
+    border-top: 1px solid #000;
+    margin-top: .4em;
+    padding-top: .4em;
+}
+
+
+#card #kanji,
+#card #hiragana {
+    font-family: Arial, 'MS Gothic', 'Yu Gothic', 'MS PGothic', 'Hiragino Kaku Gothic', 'Sazanami Gothic', sans-serif;
+    font-size: 2em;
+}
+
+#card #pronunciation {
+    cursor: pointer;
+    padding-top: .4em;
+}
+
+#card #speaker {
+    margin: 0 .5em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-image: url('../images/volume.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#card #speaker.disabled {
+    background-image: url('../images/mute.png');
+}
+
+#card #romaji {
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+}
+
+#card #romaji {
+    visibility: hidden;
+}
+
+#footnote {
+    color: #7c7c7c;
+    font-size: .6em;
+    font-style: italic;
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+}
+
+#card:hover #romaji {
+    visibility: visible;
+}
+
+footer {
+    flex: 0;
+}

@@ -2,5 +2,15 @@
   "name": "mainichi-tango",
   "version": "1.0.0",
   "author": "Yao Wang <tim.wangyao@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel dev src/index.html --no-content-hash ",
+    "build": "parcel build src/index.html -d build --no-content-hash --no-source-maps",
+    "prepare": "node script/prepare.js"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.124",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.3"
+  }
 }
