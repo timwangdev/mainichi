@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>毎日単語</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <nav>
+        <div id="menu-btn" title="setting"></div>
+    </nav>
     <div class="container">
         <section id="card">
             <div class="text-box">
@@ -19,7 +22,37 @@
             </div>
         </section>
     </div>
-    <div id="footnote"></div>
+    <div class="sidepanel">
+        <h2>设置</h2>
+        <ul id="user-settings">
+            <li id="hide_pronunciation">隐藏发音</li>
+            <li id="hide_hiragana">隐藏平假名(*)</li>
+            <li id="hide_part">隐藏词性</li>
+            <li id="hide_meaning">隐藏翻译</li>
+            <li id="autoplay_sound">自动播放读音</li>
+        </ul>
+        <hr>
+        <h3>词库选择</h3>
+        <form id="library-select">
+            <div class="select-item">
+                <input type="radio" id="book1" name="library" value="1" checked>
+                <label for="book1">新标准日本语初级(N4-N5)</label>
+            </div>
+            <div class="select-item">
+                <input type="radio" id="book2" name="library" value="2">
+                <label for="book2">新标准日本语中级(N2-N3)</label>
+            </div>
+            <div class="select-item">
+                <input type="radio" id="book3" name="library" value="3">
+                <label for="book3">新标准日本语高级(N1)</label>
+            </div>
+            <div class="select-item">
+                <input type="radio" id="note" name="library" value="0">
+                <label for="note">生词库</label>
+            </div>
+        </form>
+        <div id="footnote"></div>
+    </div>
     <script src="scripts/index.ts"></script>
 </body>
 

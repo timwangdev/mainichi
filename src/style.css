@@ -12,6 +12,41 @@ body {
     background-color: #333;
 }
 
+#menu-btn {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-image: url('../images/menu.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.4s ease;
+    z-index: 100;
+}
+ 
+.side-show #menu-btn {
+    background-image: url('../images/close.png');
+    left: calc(15px + 240px);
+}
+
+.sidepanel {
+    width: 240px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-240px);
+    transition: transform 0.4s ease;
+    overflow-y: auto;
+}
+
+.side-show .sidepanel {
+    transform: translateX(0);
+}
+
 .container {
     flex: 1;
     display: flex;
@@ -85,21 +120,58 @@ body {
     text-transform: lowercase;
 }
 
-#card #romaji {
+#card #romaji.hide,
+#card #hiragana.hide,
+#card #part.hide,
+#card #chinese.hide {
     visibility: hidden;
 }
 
+#card:hover #romaji.hide,
+#card:hover #hiragana.hide,
+#card:hover #part.hide,
+#card:hover #chinese.hide {
+    visibility: visible;
+}
+
 #footnote {
-    color: #7c7c7c;
-    font-size: .6em;
+    color: #666;
+    font-size: .8em;
     font-style: italic;
     position: absolute;
     bottom: 4px;
     right: 8px;
 }
 
-#card:hover #romaji {
-    visibility: visible;
+.sidepanel h2,
+.sidepanel h3 {
+    padding: 0 8px;
+}
+
+#user-settings {
+    padding: 0;
+    margin: 1em 0;
+}
+
+#user-settings li {
+    list-style: none;
+    font-size: 1.4em;
+    padding: 8px;
+}
+
+#user-settings li.active::after {
+    content: "✓";
+    font-weight: bold;
+    position: absolute;
+    right: 12px;
+}
+
+#user-settings li:hover {
+    background-color: #ddd;
+}
+
+#library-select .select-item {
+    padding: 8px 4px;
 }
 
 footer {
