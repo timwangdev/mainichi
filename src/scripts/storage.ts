@@ -22,25 +22,25 @@ const default_settings: UserSettings = {
     autoplay_sound: false
 }
 
-export function getAllUserSettings(): UserSettings {
+export async function getAllUserSettings(): Promise<UserSettings> {
     let objStr = storage.getItem(USER_SETTINGS);
     if (!objStr) return default_settings;
     return JSON.parse(objStr);
 }
 
-export function setUserSetting(key: keyof UserSettings, value: boolean) {
-    let settings = { ...getAllUserSettings(), ...{ [key]: value } };
+export async function setUserSetting(key: keyof UserSettings, value: boolean) {
+    let settings = { ...await getAllUserSettings(), ...{ [key]: value } };
     storage.setItem(USER_SETTINGS, JSON.stringify(settings));
 }
 
-export function getAllNoteWords(): Word[] {
+export async function getAllNoteWords(): Promise<Word[]> {
     let listStr = storage.getItem(NOTEBOOK);
     if (!listStr) return [];
     return JSON.parse(listStr);
 }
 
-export function setNoteWord(word: Word) {
-    let list = getAllNoteWords();
+export async function setNoteWord(word: Word) {
+    let list = await getAllNoteWords();
     if (list.some((i) => i.sound === word.sound)) {
         return;
     }
@@ -48,17 +48,17 @@ export function setNoteWord(word: Word) {
     storage.setItem(NOTEBOOK, JSON.stringify(list));
 }
 
-export function removeNoteWord(word: Word) {
-    let list = getAllNoteWords();
+export async function removeNoteWord(word: Word) {
+    let list = await getAllNoteWords();
     list = list.filter((i) => i.sound !== word.sound);
     storage.setItem(NOTEBOOK, JSON.stringify(list));
 }
 
-export function getWordLib(): number {
+export async function getWordLib(): Promise<number> {
     let num = storage.getItem(WORD_LIB);
     return num != null ? Number.parseInt(num, 10) : 1;
 }
 
-export function setWordLib(num: number) {
+export async function setWordLib(num: number) {
     storage.setItem(WORD_LIB, String(num));
 }

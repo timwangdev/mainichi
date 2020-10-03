@@ -17,7 +17,7 @@ export interface Word {
 export async function getWord(bookNo: number) {
     let words = [];
     if (bookNo === 0) {
-        words = getAllNoteWords();
+        words = await getAllNoteWords();
     } else {
         words = dataSet['book' + bookNo];
     }

@@ -13,7 +13,7 @@ let word: Word;
 
 async function main() {
     await renderWord();
-    renderSettings();
+    await renderSettings();
     document.getElementById('pronunciation').addEventListener('click', playSound);
     document.getElementById('menu-btn').addEventListener('click', () => {
         document.getElementsByTagName('body')[0].classList.toggle('side-show');
@@ -45,7 +45,7 @@ async function main() {
 }
 
 async function renderWord() {
-    let lib = getWordLib();
+    let lib = await getWordLib();
     word = await getWord(lib);
     if (!word) {
         return restoreWordLib();
@@ -69,16 +69,16 @@ async function renderWord() {
     document.getElementById('footnote').innerText = footnote;
     (document.getElementsByClassName('text-box')[0] as HTMLElement).style.backgroundColor = getRandomColor();
 
-    renderAction();
+    await renderAction();
 
-    let userSettings = getAllUserSettings();
+    let userSettings = await getAllUserSettings();
     if (userSettings.autoplay_sound) {
         playSound();
     }
 }
 
-function renderSettings() {
-    let userSettings = getAllUserSettings();
+async function renderSettings() {
+    let userSettings = await getAllUserSettings();
     Object.keys(userSettings).forEach((key) => {
         updateUserSetting(key, userSettings[key]);
         if (userSettings[key]) {
@@ -87,8 +87,8 @@ function renderSettings() {
     });
 }
 
-function renderAction() {
-    const notedWords = getAllNoteWords();
+async function renderAction() {
+    const notedWords = await getAllNoteWords();
     if (notedWords.findIndex((i) => i.sound === word.sound) !== -1) {
         showRemoveWordBtn();
     } else {
