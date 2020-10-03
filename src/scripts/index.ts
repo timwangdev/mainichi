@@ -61,7 +61,7 @@ async function renderWord() {
     } else {
         document.getElementById('hiragana').style.display = 'none';
     }
-    document.title = `新しいタブページ - ${title} - 毎日単語`;
+    document.title = `新しいタブ - ${title} - 毎日単語`;
     document.getElementById('kanji').innerText = title;
     document.getElementById('romaji').innerText = word.romaji;
     document.getElementById('part').innerText = word.part;
