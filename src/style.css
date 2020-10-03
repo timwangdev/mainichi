@@ -62,7 +62,6 @@ body {
     height: fit-content;
     width: 420px;
     position: relative;
-    top: -24px;
     margin: 16px;
     background-color: #9a9a9a;
     border-radius: 4px;
@@ -214,4 +213,19 @@ body {
 
 footer {
     flex: 0;
+}
+
+footer p {
+    font-size: 0.8em;
+    color: #5d5d5d;
+    text-align: center;
+    margin: .4em 0;
+}
+
+footer .auther {
+    font-size: .9em;
+}
+
+footer a {
+    color: #606060;
 }

@@ -1,7 +1,7 @@
+Install Chrome Extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/mainichi-tango/alkncbflgoakllhkhkjpdabnbebejidl)
+
 Inspired by mainichi.me
 
-Icons borrowed from the noun project
+Logo is borrowed from Freepik.
 
-Logo from Freepik
-
-MIT Licence
+MIT license.
