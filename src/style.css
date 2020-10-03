@@ -17,13 +17,31 @@ body {
     visibility: hidden;
 }
 
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1a1a1a;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal-show .overlay,
+.side-show .overlay {
+    opacity: 0.6;
+    pointer-events: auto;
+}
+
 #menu-btn {
     width: 44px;
     height: 44px;
     position: absolute;
     top: 15px;
     left: 15px;
-    background-image: url('../images/menu.png');
+    background-image: url('../images/menu_w.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,7 +50,7 @@ body {
 }
  
 .side-show #menu-btn {
-    background-image: url('../images/close.png');
+    background-image: url('../images/close_w.png');
     left: calc(15px + 240px);
 }
 
@@ -50,6 +68,71 @@ body {
 
 .side-show .sidepanel {
     transform: translateX(0);
+}
+
+.modal {
+    width: 480px;
+    height: 540px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: #2c2c2c 2px 2px 8px 2px;
+}
+
+.modal h2 {
+    flex: 0;
+    padding-left: 1em;
+}
+
+.modal .close {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 18px;
+    right: 12px;
+    background-image: url('../images/close.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal #notebook {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    border-top: 1px #b6b6b6 solid;
+    overflow-y: scroll;
+}
+
+#notebook li {
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0.4em;
+    overflow-x: hidden;
+}
+
+#notebook li + li {
+    border-top: 1px #b6b6b6 solid;
+}
+
+#notebook li:nth-last-child(1) {
+    border-bottom: 1px #b6b6b6 solid;
+}
+
+#notebook li .delete {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/close.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -210,6 +293,20 @@ body {
 
 #library-select .select-item {
     padding: 8px 4px;
+}
+
+a.side-action {
+    padding: 8px;
+    display: block;
+    color: #222;
+}
+
+#version {
+    font-size: .8em;
+    padding: 8px;
+    margin: 0;
+    display: block;
+    color: #3a3a3a;
 }
 
 footer {

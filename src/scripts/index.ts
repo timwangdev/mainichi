@@ -42,6 +42,10 @@ async function main() {
         removeNoteWord(word);
     });
     $nextWord.addEventListener('click', renderWord);
+
+    if (chrome && chrome.runtime.getManifest) {
+        document.getElementById('version').innerText = chrome.runtime.getManifest().version;
+    }
 }
 
 async function renderWord() {
