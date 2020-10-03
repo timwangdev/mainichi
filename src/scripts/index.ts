@@ -1,33 +1,61 @@
 import { getRandomColor } from "./color";
-import { getWord } from "./data";
-import { getAllUserSettings, setUserSetting, UserSettings } from "./storage";
+import { getWord, Word } from "./data";
+import { getAllNoteWords, getAllUserSettings, getWordLib, removeNoteWord, setNoteWord, setUserSetting, setWordLib, UserSettings } from "./storage";
 
 const MEDIA_URL = 'https://mainichi.cdn.timwang.me/sound/';
 
-let sound = '';
+let $saveWord = document.getElementById('save-word');
+let $removeWord = document.getElementById('remove-word');
+let $nextWord = document.getElementById('next-word');
+let $librarySelect = document.forms['library-select'];
+
+let word: Word;
 
 async function main() {
     await renderWord();
     renderSettings();
-    document.getElementById('pronunciation').addEventListener('click', () => {
-        if (!sound) return;
-        new Audio(MEDIA_URL + sound).play();
-    });
+    document.getElementById('pronunciation').addEventListener('click', playSound);
     document.getElementById('menu-btn').addEventListener('click', () => {
         document.getElementsByTagName('body')[0].classList.toggle('side-show');
     });
-    document.getElementById
+
+    $librarySelect['library'].value = getWordLib();
+    $librarySelect.addEventListener('change', () => {
+        setWordLib($librarySelect['library'].value || 1);
+        renderWord();
+    });
+
+    document.getElementById('user-settings').addEventListener('click', (ev) => {
+        let li = ev.target as HTMLElement
+        let isActive = li.classList.contains('active');
+        updateUserSetting(li.id, !isActive);
+        setUserSetting(li.id as any, !isActive);
+        li.classList.toggle('active');
+    });
+    
+    $saveWord.addEventListener('click', () => {
+        showRemoveWordBtn();
+        setNoteWord(word);
+    });
+    $removeWord.addEventListener('click', () => {
+        showSaveWordBtn();
+        removeNoteWord(word);
+    });
+    $nextWord.addEventListener('click', renderWord);
 }
 
 async function renderWord() {
-    let word = await getWord();
+    let lib = getWordLib();
+    word = await getWord(lib);
+    if (!word) {
+        return restoreWordLib();
+    }
     let hasKanji = word.kanji !== '/';
     let title = hasKanji ? word.kanji : word.hiragana;
     let footnote = word.book === 1 ? "新标准日本语初级"
         : word.book === 2 ? "新标准日本语中级"
             : word.book === 3 ? "新标准日本语高级" : "";
     footnote += word.lesson ? ` - 第${word.lesson}課` : "";
-    sound = word.sound;
     if (hasKanji) {
         document.getElementById('hiragana').innerText = word.hiragana;
     } else {
@@ -39,7 +67,14 @@ async function renderWord() {
     document.getElementById('part').innerText = word.part;
     document.getElementById('chinese').innerText = word.chinese;
     document.getElementById('footnote').innerText = footnote;
-    document.getElementById('card').style.backgroundColor = getRandomColor();
+    (document.getElementsByClassName('text-box')[0] as HTMLElement).style.backgroundColor = getRandomColor();
+
+    renderAction();
+
+    let userSettings = getAllUserSettings();
+    if (userSettings.autoplay_sound) {
+        playSound();
+    }
 }
 
 function renderSettings() {
@@ -48,18 +83,17 @@ function renderSettings() {
         updateUserSetting(key, userSettings[key]);
         if (userSettings[key]) {
             document.getElementById(key).classList.add('active');
-            if (key === 'autoplay_sound') {
-                new Audio(MEDIA_URL + sound).play();
-            }
         }
     });
-    document.getElementById('user-settings').addEventListener('click', (ev) => {
-        let li = ev.target as HTMLElement
-        let isActive = li.classList.contains('active');
-        updateUserSetting(li.id, !isActive);
-        setUserSetting(li.id as any, !isActive);
-        li.classList.toggle('active');
-    })
+}
+
+function renderAction() {
+    const notedWords = getAllNoteWords();
+    if (notedWords.findIndex((i) => i.sound === word.sound) !== -1) {
+        showRemoveWordBtn();
+    } else {
+        showSaveWordBtn();
+    }
 }
 
 function updateUserSetting(key: string, value: boolean) {
@@ -80,6 +114,27 @@ function updateUserSetting(key: string, value: boolean) {
         default:
             return;
     }
+}
+
+async function restoreWordLib() {
+    $librarySelect['library'].value = 1;
+    setWordLib($librarySelect['library'].value || 1);
+    await renderWord();
+}
+
+function playSound() {
+    if (!word || !word.sound) return;
+    return new Audio(MEDIA_URL + word.sound).play();
+}
+
+function showRemoveWordBtn() {
+    $saveWord.style.display = 'none';
+    $removeWord.style.display = 'flex';
+}
+
+function showSaveWordBtn() {
+    $saveWord.style.display = 'flex';
+    $removeWord.style.display = 'none';
 }
 
 main();

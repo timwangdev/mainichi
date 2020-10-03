@@ -20,6 +20,11 @@
                 <p id="pronunciation"><span id="speaker"></span><span id="romaji"></span></p>
                 <p id="meaning">[<span id="part"></span>] <span id="chinese"></span></p>
             </div>
+            <div class="action-box">
+                <div class="card-action" id="save-word" style="display: none"><span class="icon"></span>保存</div>
+                <div class="card-action" id="remove-word" style="display: none"><span class="icon"></span>已保存</div>
+                <div class="card-action" id="next-word"><span class="icon"></span>下一个</div>
+            </div>
         </section>
     </div>
     <div class="sidepanel">
@@ -48,7 +53,7 @@
             </div>
             <div class="select-item">
                 <input type="radio" id="note" name="library" value="0">
-                <label for="note">生词库</label>
+                <label for="note">生词库(保存的单词)</label>
             </div>
         </form>
         <div id="footnote"></div>

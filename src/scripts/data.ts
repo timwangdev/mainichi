@@ -1,7 +1,8 @@
 // @ts-ignore
 import dataSet from '../../data/*.json';
+import { getAllNoteWords } from './storage';
 
-interface Word {
+export interface Word {
     id: number,
     part: string,
     hiragana: string,
@@ -13,8 +14,13 @@ interface Word {
     sound: string
 }
 
-export async function getWord() {
-    const words = dataSet.book1;
+export async function getWord(bookNo: number) {
+    let words = [];
+    if (bookNo === 0) {
+        words = getAllNoteWords();
+    } else {
+        words = dataSet['book' + bookNo];
+    }
     let idx = Math.floor(Math.random() * words.length);
     return words[idx] as Word;
 }

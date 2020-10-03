@@ -12,6 +12,10 @@ body {
     background-color: #333;
 }
 
+.hide {
+    visibility: hidden;
+}
+
 #menu-btn {
     width: 44px;
     height: 44px;
@@ -60,7 +64,7 @@ body {
     position: relative;
     top: -24px;
     margin: 16px;
-    background-color: blueviolet;
+    background-color: #9a9a9a;
     border-radius: 4px;
     box-shadow: #2c2c2c 2px 2px 8px 2px;
 }
@@ -69,6 +73,8 @@ body {
     padding: 2em;
     width: 100%;
     color: #222;
+    border-radius: 4px;
+    box-shadow: #2c2c2c 0px 0px 6px 0px;
 }
 
 #card h1 {
@@ -100,18 +106,14 @@ body {
 }
 
 #card #speaker {
-    margin: 0 .5em;
+    margin: 0 .5em -.2em 0;
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    background-image: url('../images/volume.png');
+    width: 1.2em;
+    height: 1.2em;
+    background-image: url('../images/speaker.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-#card #speaker.disabled {
-    background-image: url('../images/mute.png');
 }
 
 #card #romaji {
@@ -120,19 +122,55 @@ body {
     text-transform: lowercase;
 }
 
-#card #romaji.hide,
-#card #hiragana.hide,
-#card #part.hide,
-#card #chinese.hide {
-    visibility: hidden;
-}
-
-#card:hover #romaji.hide,
-#card:hover #hiragana.hide,
-#card:hover #part.hide,
-#card:hover #chinese.hide {
+.text-box:hover #romaji,
+.text-box:hover #hiragana,
+.text-box:hover #part,
+.text-box:hover #chinese {
     visibility: visible;
 }
+
+#card .action-box {
+    display: flex;
+    flex-direction: row;
+    height: 56px;
+}
+
+#card .card-action {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#card .card-action:hover {
+    background-color: #808080;
+}
+
+#card .card-action + .card-action {
+    border-left: #505050 1px solid;
+}
+
+.card-action .icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 .5em 0 -.5em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card-action#save-word .icon {
+    background-image: url('../images/bookmark_o.png');
+}
+
+.card-action#remove-word .icon {
+    background-image: url('../images/bookmark.png');
+}
+
+.card-action#next-word .icon {
+    background-image: url('../images/next.png');
+}
+
 
 #footnote {
     color: #666;
