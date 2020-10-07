@@ -46,7 +46,11 @@ const Notebook: React.FunctionComponent<Props> = (props) => {
   let dispatch = useContext(Dispatch);
 
   return (
-    <Modal modalId="manage-notebook" title="管理生词本" isModalOpen={props.isModalOpen}>
+    <Modal
+      modalId="manage-notebook"
+      title="管理生词本"
+      isModalOpen={props.isModalOpen}
+    >
       {props.notebook.length !== 0 ? (
         <NotebookTable>
           <tbody>

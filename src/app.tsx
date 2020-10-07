@@ -6,7 +6,6 @@ import Container from "./compoents/Container";
 import Footer from "./compoents/Footer";
 import GlobalStyle from "./compoents/GlobalStyle";
 import MenuToggle from "./compoents/MenuToggle";
-import Modal from "./compoents/Modal";
 import Notebook from "./compoents/Notebook";
 import Overlay from "./compoents/Overlay";
 import SidePanel from "./compoents/SidePanel";
@@ -24,7 +23,7 @@ const initialState: AppState = {
   isMenuOpen: false,
   word: null,
   notebook: [],
-  nextNotebookAction: 'none',
+  nextNotebookAction: "none",
   userSettings: {},
   soundToPlay: null,
   fetchingNext: false,
@@ -40,8 +39,12 @@ const App = () => {
     store.userSettings.autoplaySound,
     dispatch
   );
-  useNotebook(store.nextNotebookAction, store.notebookTarget || store.word, dispatch);
-  usePlaySound(store.soundToPlay, dispatch);
+  useNotebook(
+    store.nextNotebookAction,
+    store.notebookTarget || store.word,
+    dispatch
+  );
+  usePlaySound(store.soundToPlay, store.word, dispatch);
 
   let isWordSaved = useMemo(
     () =>

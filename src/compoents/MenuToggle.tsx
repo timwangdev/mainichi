@@ -18,9 +18,7 @@ const MenuToggleBtn = styled.div<{ isActive: boolean }>`
   left: 15px;
   cursor: pointer;
   background-image: ${(props) =>
-    props.isActive
-      ? `url(${closeIcon})`
-      : `url(${menuIcon})`};
+    props.isActive ? `url(${closeIcon})` : `url(${menuIcon})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

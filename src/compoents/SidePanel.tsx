@@ -128,7 +128,9 @@ const SidePanel: React.FunctionComponent<Props> = (props) => {
           <label htmlFor={key}>{title}</label>
         </LibrarySelect>
       ))}
-      <PanelLink href="#" onClick={() => dispatch({ type: 'openNotebook' })}>管理生词本...</PanelLink>
+      <PanelLink href="#" onClick={() => dispatch({ type: "openNotebook" })}>
+        管理生词本...
+      </PanelLink>
       <PanelLink
         href="https://github.com/timwangdev/mainichi/issues/new"
         target="_blank"
@@ -138,7 +140,7 @@ const SidePanel: React.FunctionComponent<Props> = (props) => {
       <PanelLink>
         {chrome && chrome.runtime && chrome.runtime.getManifest
           ? chrome.runtime.getManifest().version
-          : 'TEST_BUILD'}
+          : "TEST_BUILD"}
       </PanelLink>
     </Panel>
   );

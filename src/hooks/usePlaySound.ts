@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import getMediaUrl from "../utils/getMediaUrl";
 
-function usePlaySound(soundToPlay, dispatch) {
+function usePlaySound(soundToPlay, word, dispatch) {
   useEffect(
     function playSound() {
       if (soundToPlay) {
@@ -11,7 +11,7 @@ function usePlaySound(soundToPlay, dispatch) {
       }
     },
     [soundToPlay]
-  );  
+  );
 }
 
 export default usePlaySound;

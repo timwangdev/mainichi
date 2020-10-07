@@ -15,7 +15,7 @@ const filesToCopy = [
 fs.rmdirSync(buildDir, { recursive: true });
 
 console.log('Build started.');
-child_process.execSync('yarn build');
+child_process.execSync('yarn build', { stdio: 'inherit' });
 console.log('Build done.');
 
 fs.mkdirSync(path.resolve(buildDir, 'logo'));

@@ -1,8 +1,8 @@
 import { UserSettings, Word } from "../types";
 import { getItem, setItem } from "./storage";
 
-const USER_SETTINGS = 'user_settings';
-const NOTEBOOK = 'notebook';
+const USER_SETTINGS = "user_settings";
+const NOTEBOOK = "notebook";
 
 interface DataSets {
   book1: Word[];
@@ -10,14 +10,14 @@ interface DataSets {
   book3: Word[];
 }
 
-const dataSets = require('../../data/*.json') as DataSets;
+const dataSets = require("../../data/*.json") as DataSets;
 
 export async function getWord(bookNo = 1) {
-    let words = [];
-    words = bookNo === 0 ? await getAllNoteWords() : dataSets['book' + bookNo];
-    let idx = Math.floor(Math.random() * words.length);
-    let word = words[idx] as Word;
-    return word;
+  let words = [];
+  words = bookNo === 0 ? await getAllNoteWords() : dataSets["book" + bookNo];
+  let idx = Math.floor(Math.random() * words.length);
+  let word = words[idx] as Word;
+  return word;
 }
 
 export async function getAllUserSettings(): Promise<UserSettings> {

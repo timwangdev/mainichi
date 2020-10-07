@@ -102,7 +102,9 @@ const Card: React.FunctionComponent<Props> = (props) => {
   let hasKanji = word.kanji !== "/";
   let title = hasKanji ? word.kanji : word.hiragana;
 
-  useEffect(() => { setBgColor(getNextColor()) }, [word.id]);
+  useEffect(() => {
+    setBgColor(getNextColor());
+  }, [word.id]);
 
   return (
     <CardSection ref={cardRef} bgColor={bgColor}>

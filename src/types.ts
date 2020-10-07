@@ -3,7 +3,7 @@ export interface AppState {
   isMenuOpen: boolean;
   word: Word | null;
   notebook: Word[];
-  nextNotebookAction: 'none' | 'save' | 'remove';
+  nextNotebookAction: "none" | "save" | "remove";
   notebookTarget?: Word;
   userSettings: UserSettings;
   soundToPlay: string | null;

@@ -5,7 +5,7 @@ node_modules/
 dist/
 build/
 
-node.js
+script/files.js
 
 *.crx
 *.pem

@@ -16,7 +16,7 @@ function useNotebook(
 
   useEffect(
     function notebookAction() {
-      if (nextAction === 'none') {
+      if (nextAction === "none") {
         return;
       }
       (async () => {
@@ -28,7 +28,8 @@ function useNotebook(
         }
         dispatch({ type: "setNotebook", payload: list });
       })();
-    }, [nextAction]
+    },
+    [nextAction]
   );
 }
 
