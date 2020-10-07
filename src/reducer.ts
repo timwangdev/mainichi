@@ -5,7 +5,6 @@ const reducer: React.Reducer<AppState, Action> = (
   prevState: AppState,
   action: Action
 ) => {
-  console.log(prevState, action);
   switch (action.type) {
     case "initSettings":
       return { ...prevState, fetchingNext: true, userSettings: action.payload };

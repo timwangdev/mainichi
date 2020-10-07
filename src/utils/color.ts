@@ -26,7 +26,6 @@ export function getNextColor() {
   } else {
     currentColorIdx += 1;
   }
-  console.log(currentColorIdx);
   return COLORLIST[currentColorIdx];
 }
 
