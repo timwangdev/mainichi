@@ -5,7 +5,7 @@
    "chrome_url_overrides": {
       "newtab": "index.html"
    },
-   "description": "Learn new Japanese word in new tab.",
+   "description": "Learn new Japanese words in new tab.",
    "manifest_version": 2,
    "name": "Mainichi Tango",
    "icons": {
