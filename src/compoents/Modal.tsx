@@ -103,7 +103,7 @@ const Modal: React.FunctionComponent<Props> = (props) => {
       }
 
       if (!props.isModalOpen) {
-        el.current.classList.add("willHide");
+        el.current.classList.add(prev ? "willHide" : "hide");
         return;
       }
 
