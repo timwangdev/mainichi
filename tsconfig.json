@@ -1,17 +1,13 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src",
         "lib": [
             "dom",
-            "es2015"
+            "es2018"
         ],
-        "typeRoots": [
-            "node_modules/@types"
-        ]
+        "jsx": "react",
     },
     "include": [
         "src/**/*"
     ],
     "exclude": [],
-    
 }

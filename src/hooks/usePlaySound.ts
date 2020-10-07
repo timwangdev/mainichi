@@ -1,0 +1,17 @@
+import { useEffect } from "react";
+import getMediaUrl from "../utils/getMediaUrl";
+
+function usePlaySound(soundToPlay, dispatch) {
+  useEffect(
+    function playSound() {
+      if (soundToPlay) {
+        let audio = new Audio(getMediaUrl(soundToPlay));
+        audio.play();
+        dispatch({ type: "soundPlayed" });
+      }
+    },
+    [soundToPlay]
+  );  
+}
+
+export default usePlaySound;

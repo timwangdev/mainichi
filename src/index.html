@@ -1,84 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新しいタブ - 毎日単語</title>
-    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav>
-        <div id="menu-btn" title="setting"></div>
-    </nav>
-    <div class="container">
-        <section id="card">
-            <div class="text-box">
-                <h1 id="kanji"></h1>
-                <p id='hiragana'></p>
-                <p id="pronunciation"><span id="speaker"></span><span id="romaji"></span></p>
-                <p id="meaning">[<span id="part"></span>] <span id="chinese"></span></p>
-            </div>
-            <div class="action-box">
-                <div class="card-action" id="save-word" style="display: none"><span class="icon"></span>保存</div>
-                <div class="card-action" id="remove-word" style="display: none"><span class="icon"></span>已保存</div>
-                <div class="card-action" id="next-word"><span class="icon"></span>下一个</div>
-            </div>
-        </section>
-    </div>
-    <div class="overlay"></div>
-    <div class="sidepanel">
-        <h2>设置</h2>
-        <ul id="user-settings">
-            <li id="hide_pronunciation">隐藏发音</li>
-            <li id="hide_hiragana">隐藏平假名(*)</li>
-            <li id="hide_part">隐藏词性</li>
-            <li id="hide_meaning">隐藏翻译</li>
-            <li id="autoplay_sound">自动播放读音</li>
-        </ul>
-        <hr>
-        <h3>词库选择</h3>
-        <form id="library-select">
-            <div class="select-item">
-                <input type="radio" id="book1" name="library" value="1" checked>
-                <label for="book1">新标准日本语初级(N4-N5)</label>
-            </div>
-            <div class="select-item">
-                <input type="radio" id="book2" name="library" value="2">
-                <label for="book2">新标准日本语中级(N2-N3)</label>
-            </div>
-            <div class="select-item">
-                <input type="radio" id="book3" name="library" value="3">
-                <label for="book3">新标准日本语高级(N1)</label>
-            </div>
-            <div class="select-item">
-                <input type="radio" id="note" name="library" value="0">
-                <label for="note">生词库(保存的单词)</label>
-            </div>
-        </form>
-        <!-- <a href="javascript:void(0)" class="side-action" id="manage-note">管理生词本...</a> -->
-        <hr>
-        <a href="https://github.com/timwangdev/mainichi/issues/new" target="_blank" class="side-action"
-            id="report-issue">报告错误...</a>
-        <p id='version'>TEST_BUILD</p>
-        <div id="footnote"></div>
-    </div>
-    <!-- <div class="modal">
-        <h2>生词本</h2>
-        <div class="close"></div>
-        <ul id="notebook">
-            <li><span class="delete"></span></li>
-        </ul>
-    </div> -->
-    <footer>
-        <p class="auther">Developed by <a href="https://github.com/timwangdev/">Yao Wang.</p>
-        <p class="thanks">Inspired by mainichi.me. Logo is borrowed from Freepik.</p>
-        <p>Install Chrome Extension from <a
-                href="https://chrome.google.com/webstore/detail/mainichi-tango/alkncbflgoakllhkhkjpdabnbebejidl">Chrome
-                Web Store</a>.</p>
-    </footer>
-    <script src="scripts/index.ts"></script>
+    <div id="app-root"></div>
+    <div id="modal-root"></div>
+    <script src="index.tsx"></script>
 </body>
-
 </html>
