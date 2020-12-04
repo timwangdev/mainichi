@@ -18,8 +18,8 @@ const CardSection = styled.section<{ bgColor: string }>`
   display: flex;
   align-items: center;
   height: fit-content;
-  min-height: 256px;
-  width: 380px;
+  min-height: 260px;
+  width: 420px;
   margin: 16px;
   position: relative;
   background-color: ${(props) => props.bgColor};
@@ -29,7 +29,7 @@ const CardSection = styled.section<{ bgColor: string }>`
 `;
 
 const TextBox = styled.div`
-  padding: 32px 36px;
+  padding: 2em 2.2em;
   width: 100%;
   color: #222;
   border-radius: 8px;
@@ -52,15 +52,15 @@ const Title = styled.h1<{ hideHiragana?: boolean }>`
 const Pronunciation = styled.p`
   cursor: pointer;
   font-size: 1.4em;
-  padding-top: 0.4em;
+  padding-top: 0.6em;
 `;
 
 const SpeakerIcon = styled.span`
   margin-right: 0.2em;
   margin-bottom: -0.1em;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 1em;
+  height: 1em;
   background-image: url(${speakerIcon});
   background-position: center;
   background-repeat: no-repeat;
@@ -77,12 +77,12 @@ const Romaji = styled.span<{ hide?: boolean }>`
 `;
 
 const Divider = styled.div`
-  margin-top: 0.8em;
+  margin-top: 1em;
   border-top: 1px solid #000;
 `;
 
 const Meaning = styled.p<{ hide?: boolean }>`
-  font-size: 1.4em;
+  font-size: 1.5em;
   padding-top: 0.6em;
   visibility: ${(props) => (props.hide ? "hidden" : "visible")};
 
