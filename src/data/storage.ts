@@ -1,4 +1,4 @@
-const HAS_CHROME_STORAGE = chrome && chrome.storage && chrome.storage.sync;
+const HAS_CHROME_STORAGE = !!(chrome && chrome.storage && chrome.storage.sync);
 
 export function getItem(key: string) {
   if (!HAS_CHROME_STORAGE) {

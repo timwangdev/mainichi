@@ -4,7 +4,7 @@ import { Action } from "../types";
 
 function useFetchWord(
   fetchingNext: boolean,
-  wordLibrary: number,
+  wordLibrary: string,
   autoplaySound: boolean,
   dispatch: Dispatch<Action>
 ) {
@@ -16,7 +16,7 @@ function useFetchWord(
           if (word == null) {
             dispatch({
               type: "changeUserSetting",
-              payload: { wordLibrary: 1 },
+              payload: { wordLibrary: "01" },
             });
             return;
           }

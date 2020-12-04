@@ -5,7 +5,7 @@ node_modules/
 dist/
 build/
 
-script/files.js
+tmp/
 
 *.crx
 *.pem

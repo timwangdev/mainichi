@@ -18,8 +18,8 @@ const CardSection = styled.section<{ bgColor: string }>`
   display: flex;
   align-items: center;
   height: fit-content;
-  min-height: 224px;
-  width: 380px;
+  min-height: 260px;
+  width: 420px;
   margin: 16px;
   position: relative;
   background-color: ${(props) => props.bgColor};
@@ -29,24 +29,22 @@ const CardSection = styled.section<{ bgColor: string }>`
 `;
 
 const TextBox = styled.div`
-  padding: 32px;
+  padding: 32px 36px;
   width: 100%;
   color: #222;
   border-radius: 8px;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<{ hideHiragana?: boolean }>`
   font-family: ${(props) => props.theme.jpFont};
-  font-size: 2em;
+  font-size: 2.5em;
   margin: 0;
-`;
 
-const Hiragana = styled.p<{ hide?: boolean }>`
-  font-family: ${(props) => props.theme.jpFont};
-  font-size: 2em;
-  visibility: ${(props) => (props.hide ? "hidden" : "visible")};
+  & rt {
+    visibility: ${(props) => (props.hideHiragana ? "hidden" : "visible")};
+  }
 
-  ${TextBox}:hover & {
+  ${TextBox}:hover & rt {
     visibility: visible;
   }
 `;
@@ -99,20 +97,18 @@ const Card: React.FunctionComponent<Props> = (props) => {
   let [bgColor, setBgColor] = useState(getRandomColor());
 
   let { word } = props;
-  let hasKanji = word.kanji !== "/";
-  let title = hasKanji ? word.kanji : word.hiragana;
 
   useEffect(() => {
     setBgColor(getNextColor());
-  }, [word.id]);
+  }, [word.uuid]);
 
   return (
     <CardSection ref={cardRef} bgColor={bgColor}>
       <TextBox>
-        <Title>{title}</Title>
-        {hasKanji && (
-          <Hiragana hide={props.hideHiragana}>{word.hiragana}</Hiragana>
-        )}
+        <Title
+          hideHiragana={props.hideHiragana}
+          dangerouslySetInnerHTML={{ __html: word.furigana }}
+        />
         <Pronunciation
           onClick={() => dispatch({ type: "playSound", payload: word.sound })}
         >
@@ -121,7 +117,7 @@ const Card: React.FunctionComponent<Props> = (props) => {
         </Pronunciation>
         <Divider />
         <Meaning hide={props.hideMeaning}>
-          <span>[{word.part}]</span> <span>{word.chinese}</span>
+          <span>{word.part}</span> <span>{word.chinese}</span>
         </Meaning>
       </TextBox>
     </CardSection>

@@ -8,6 +8,7 @@ export interface AppState {
   userSettings: UserSettings;
   soundToPlay: string | null;
   fetchingNext: boolean;
+  fetchSettings: boolean;
 }
 
 export interface Action<P = any> {
@@ -16,15 +17,17 @@ export interface Action<P = any> {
 }
 
 export interface Word {
-  id: number;
+  uuid: string;
   part: string;
-  hiragana: string;
+  kana: string;
   romaji: string;
-  kanji: string;
+  furigana: string;
   chinese: string;
-  book: number;
-  lesson: number;
+  bookId: string;
+  lessonId: string;
+  wordId: string;
   sound: string;
+  tags?: string[];
 }
 
 export interface UserSettings {
@@ -32,5 +35,5 @@ export interface UserSettings {
   hideHiragana?: boolean;
   hideMeaning?: boolean;
   autoplaySound?: boolean;
-  wordLibrary?: number;
+  wordLibrary?: string;
 }

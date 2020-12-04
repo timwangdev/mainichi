@@ -18,10 +18,10 @@ const USER_SETTINGS_TITLES = {
 };
 
 const LIBRARY_OPTIONS = {
-  book1: [1, "新标准日本语初级(N4-N5)"],
-  book2: [2, "新标准日本语中级(N2-N3)"],
-  book3: [3, "新标准日本语高级(N1)"],
-  notebook: [0, "生词库(保存的单词)"],
+  book1: ["01", "新标准日本语初级(N4-N5)"],
+  book2: ["02", "新标准日本语中级(N2-N3)"],
+  book3: ["03", "新标准日本语高级(N1)"],
+  notebook: ["", "生词库(保存的单词)"],
 };
 
 const Panel = styled.div<{ isOpened: boolean }>`
@@ -86,7 +86,9 @@ const PanelLink = styled.a`
 const SidePanel: React.FunctionComponent<Props> = (props) => {
   let dispatch = useContext(Dispatch);
   let checkedValue =
-    props.userSettings.wordLibrary != null ? props.userSettings.wordLibrary : 1;
+    props.userSettings.wordLibrary != null
+      ? props.userSettings.wordLibrary
+      : "01";
   return (
     <Panel isOpened={props.isOpened}>
       <Title>偏好设置</Title>
@@ -122,7 +124,7 @@ const SidePanel: React.FunctionComponent<Props> = (props) => {
                 });
               }
             }}
-            disabled={value === 0 && !props.isNotebookEnabled}
+            disabled={value === "" && !props.isNotebookEnabled}
             checked={checkedValue === value}
           />
           <label htmlFor={key}>{title}</label>

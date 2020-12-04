@@ -5,9 +5,17 @@ const reducer: React.Reducer<AppState, Action> = (
   prevState: AppState,
   action: Action
 ) => {
+  console.log(action, prevState);
   switch (action.type) {
+    case "initDb":
+      return { ...prevState, fetchSettings: true };
     case "initSettings":
-      return { ...prevState, fetchingNext: true, userSettings: action.payload };
+      return {
+        ...prevState,
+        fetchSettings: false,
+        fetchingNext: true,
+        userSettings: action.payload,
+      };
     case "initWord":
       return {
         ...prevState,

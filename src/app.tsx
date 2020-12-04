@@ -11,6 +11,7 @@ import Overlay from "./compoents/Overlay";
 import SidePanel from "./compoents/SidePanel";
 import Dispatch from "./context/Dispatch";
 import useFetchWord from "./hooks/useFetchWord";
+import useInitDb from "./hooks/useInitDb";
 import useNotebook from "./hooks/useNotebook";
 import usePlaySound from "./hooks/usePlaySound";
 import useUserSettings from "./hooks/useUserSettings";
@@ -27,12 +28,14 @@ const initialState: AppState = {
   userSettings: {},
   soundToPlay: null,
   fetchingNext: false,
+  fetchSettings: false,
 };
 
 const App = () => {
   let [store, dispatch] = useReducer(reducer, initialState);
 
-  useUserSettings(store.userSettings, dispatch);
+  useInitDb(dispatch);
+  useUserSettings(store.userSettings, store.fetchSettings, dispatch);
   useFetchWord(
     store.fetchingNext,
     store.userSettings.wordLibrary,
@@ -49,7 +52,7 @@ const App = () => {
   let isWordSaved = useMemo(
     () =>
       store.word &&
-      store.notebook.findIndex((i) => store.word.id === i.id) !== -1,
+      store.notebook.findIndex((i) => store.word.uuid === i.uuid) !== -1,
     [store.word, store.notebook]
   );
 
