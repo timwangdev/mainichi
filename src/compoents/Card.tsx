@@ -18,8 +18,8 @@ const CardSection = styled.section<{ bgColor: string }>`
   display: flex;
   align-items: center;
   height: fit-content;
-  min-height: 260px;
-  width: 420px;
+  min-height: 256px;
+  width: 380px;
   margin: 16px;
   position: relative;
   background-color: ${(props) => props.bgColor};
@@ -37,7 +37,7 @@ const TextBox = styled.div`
 
 const Title = styled.h1<{ hideHiragana?: boolean }>`
   font-family: ${(props) => props.theme.jpFont};
-  font-size: 2.5em;
+  font-size: 2.4em;
   margin: 0;
 
   & rt {
@@ -51,16 +51,16 @@ const Title = styled.h1<{ hideHiragana?: boolean }>`
 
 const Pronunciation = styled.p`
   cursor: pointer;
-  font-size: 1.5em;
-  padding-top: 0.2em;
+  font-size: 1.4em;
+  padding-top: 0.4em;
 `;
 
 const SpeakerIcon = styled.span`
   margin-right: 0.2em;
   margin-bottom: -0.1em;
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   background-image: url(${speakerIcon});
   background-position: center;
   background-repeat: no-repeat;
@@ -77,13 +77,13 @@ const Romaji = styled.span<{ hide?: boolean }>`
 `;
 
 const Divider = styled.div`
-  margin-top: 0.5em;
+  margin-top: 0.8em;
   border-top: 1px solid #000;
 `;
 
 const Meaning = styled.p<{ hide?: boolean }>`
   font-size: 1.4em;
-  padding-top: 0.4em;
+  padding-top: 0.6em;
   visibility: ${(props) => (props.hide ? "hidden" : "visible")};
 
   ${TextBox}:hover & {

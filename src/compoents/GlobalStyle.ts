@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
   p {
     margin: 0;
+    word-break: break-all; 
   }
   #app-root {
     height: 100vh;
