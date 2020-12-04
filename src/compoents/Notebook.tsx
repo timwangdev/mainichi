@@ -55,14 +55,12 @@ const Notebook: React.FunctionComponent<Props> = (props) => {
         <NotebookTable>
           <tbody>
             {props.notebook.map((word) => (
-              <NotebookTr key={word.id}>
+              <NotebookTr key={word.uuid}>
                 <NotebookTd>
-                  {word.kanji !== "/"
-                    ? `${word.kanji} (${word.hiragana})`
-                    : word.hiragana}
+                  {word.kana}
                 </NotebookTd>
                 <NotebookTd>
-                  [{word.part}] {word.chinese}
+                  {word.part} {word.chinese}
                 </NotebookTd>
                 <NotebookTd>
                   <a
