@@ -56,9 +56,7 @@ const Notebook: React.FunctionComponent<Props> = (props) => {
           <tbody>
             {props.notebook.map((word) => (
               <NotebookTr key={word.uuid}>
-                <NotebookTd>
-                  {word.kana}
-                </NotebookTd>
+                <NotebookTd>{word.kana}</NotebookTd>
                 <NotebookTd>
                   {word.part} {word.chinese}
                 </NotebookTd>

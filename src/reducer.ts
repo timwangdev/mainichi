@@ -5,7 +5,6 @@ const reducer: React.Reducer<AppState, Action> = (
   prevState: AppState,
   action: Action
 ) => {
-  console.log(action, prevState);
   switch (action.type) {
     case "initDb":
       return { ...prevState, fetchSettings: true };
@@ -65,6 +64,7 @@ const reducer: React.Reducer<AppState, Action> = (
           prevState.userSettings.wordLibrary !== action.payload.wordLibrary,
       };
     default:
+      console.warn("Unhandled action: " + action.type);
       return prevState;
   }
 };

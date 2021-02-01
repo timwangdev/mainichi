@@ -34,6 +34,6 @@ filesToCopy.forEach((file) => {
 try {
     fs.rmdirSync(zipPath);
     console.log("Delete " + zipPath + " done.");
-} catch {
-    console.log("Delete " + zipPath + " failed.");
+} catch (e) {
+    console.log("Delete " + zipPath + " failed.", e);
 }
