@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import Dispatch from "../context/Dispatch";
 
-function usePlaySound(audio: HTMLAudioElement, shouldPlay: boolean, dispatch) {
+function usePlaySound(audio: HTMLAudioElement, shouldPlay: boolean) {
+  let dispatch = useContext(Dispatch);
   useEffect(
     function playSound() {
       if (shouldPlay) {

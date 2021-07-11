@@ -1,8 +1,9 @@
-import { useEffect, Dispatch, useRef } from "react";
+import { useEffect, useContext } from "react";
+import Dispatch from "../context/Dispatch";
 import { migrateDb } from "../data";
-import { Action } from "../types";
 
-function useInitDb(dispatch: Dispatch<Action>) {
+function useInitDb() {
+  let dispatch = useContext(Dispatch);
   useEffect(function getInitSettings() {
     (async () => {
       await migrateDb();

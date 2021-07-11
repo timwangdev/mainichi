@@ -35,20 +35,15 @@ const initialState: AppState = {
 const App = () => {
   let [store, dispatch] = useReducer(reducer, initialState);
 
-  useInitDb(dispatch);
-  useUserSettings(store.userSettings, store.fetchSettings, dispatch);
+  useInitDb();
+  useUserSettings(store.userSettings, store.fetchSettings);
   useFetchWord(
     store.fetchingNext,
     store.userSettings.wordLibrary,
-    store.userSettings.autoplaySound,
-    dispatch
+    store.userSettings.autoplaySound
   );
-  useNotebook(
-    store.nextNotebookAction,
-    store.notebookTarget || store.word,
-    dispatch
-  );
-  usePlaySound(store.audio, store.shouldPlay, dispatch);
+  useNotebook(store.nextNotebookAction, store.notebookTarget || store.word);
+  usePlaySound(store.audio, store.shouldPlay);
 
   let isWordSaved = useMemo(
     () =>

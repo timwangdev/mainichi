@@ -1,14 +1,14 @@
-import { Dispatch, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import Dispatch from "../context/Dispatch";
 import { getWord } from "../data";
 import getMediaUrl from "../utils/getMediaUrl";
-import { Action } from "../types";
 
 function useFetchWord(
   fetchingNext: boolean,
   wordLibrary: string,
-  autoplaySound: boolean,
-  dispatch: Dispatch<Action>
+  autoplaySound: boolean
 ) {
+  let dispatch = useContext(Dispatch);
   useEffect(
     function fetchNext() {
       if (fetchingNext) {
@@ -22,7 +22,7 @@ function useFetchWord(
             return;
           }
           dispatch({ type: "initWord", payload: word });
-          let audio = new Audio(getMediaUrl(word, word.sound));
+          let audio = new Audio(getMediaUrl(word));
           dispatch({
             type: "playSound",
             payload: { audio, shouldPlay: autoplaySound },

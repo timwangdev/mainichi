@@ -13,10 +13,10 @@ function getDeckId(bookId) {
   }
 }
 
-function getMediaUrl(word: Word, sound: string) {
-  return `https://timwang.me/biaori/decks/${getDeckId(
-    word.bookId
-  )}/media/${sound}`;
+function getMediaUrl(word: Word) {
+  return `https://timwang.me/biaori/decks/${getDeckId(word.bookId)}/media/${
+    word.sound
+  }`;
 }
 
 export default getMediaUrl;

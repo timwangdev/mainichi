@@ -1,12 +1,10 @@
-import { Dispatch, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import Dispatch from "../context/Dispatch";
 import { getAllNoteWords, removeNoteWord, setNoteWord } from "../data";
-import { Action, Word } from "../types";
+import { Word } from "../types";
 
-function useNotebook(
-  nextAction: string,
-  word: Word,
-  dispatch: Dispatch<Action>
-) {
+function useNotebook(nextAction: string, word: Word) {
+  let dispatch = useContext(Dispatch);
   useEffect(function getNotebook() {
     (async () => {
       let list = await getAllNoteWords();

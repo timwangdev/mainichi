@@ -1,12 +1,10 @@
-import { useEffect, Dispatch, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
+import Dispatch from "../context/Dispatch";
 import { getAllUserSettings, setUserSettings } from "../data";
-import { Action, UserSettings } from "../types";
+import { UserSettings } from "../types";
 
-function useUserSettings(
-  userSettings: UserSettings,
-  fetchSettings: boolean,
-  dispatch: Dispatch<Action>
-) {
+function useUserSettings(userSettings: UserSettings, fetchSettings: boolean) {
+  let dispatch = useContext(Dispatch);
   let prevSettings = useRef(null);
 
   useEffect(
