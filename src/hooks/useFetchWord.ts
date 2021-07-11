@@ -23,7 +23,10 @@ function useFetchWord(
           }
           dispatch({ type: "initWord", payload: word });
           let audio = new Audio(getMediaUrl(word, word.sound));
-          dispatch({ type: "playSound", payload: { audio, shouldPlay: autoplaySound } });
+          dispatch({
+            type: "playSound",
+            payload: { audio, shouldPlay: autoplaySound },
+          });
         })();
       }
     },
