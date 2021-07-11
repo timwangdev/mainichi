@@ -110,7 +110,7 @@ const Card: React.FunctionComponent<Props> = (props) => {
           dangerouslySetInnerHTML={{ __html: word.furigana }}
         />
         <Pronunciation
-          onClick={() => dispatch({ type: "playSound", payload: word.sound })}
+          onClick={() => dispatch({ type: "playSound", payload: { shouldPlay: true } })}
         >
           <SpeakerIcon />
           <Romaji hide={props.hideRomaji}>{word.romaji}</Romaji>

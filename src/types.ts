@@ -6,7 +6,8 @@ export interface AppState {
   nextNotebookAction: "none" | "save" | "remove";
   notebookTarget?: Word;
   userSettings: UserSettings;
-  soundToPlay: string | null;
+  audio: HTMLAudioElement | null;
+  shouldPlay: boolean;
   fetchingNext: boolean;
   fetchSettings: boolean;
 }

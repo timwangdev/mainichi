@@ -26,7 +26,8 @@ const initialState: AppState = {
   notebook: [],
   nextNotebookAction: "none",
   userSettings: {},
-  soundToPlay: null,
+  audio: null,
+  shouldPlay: false,
   fetchingNext: false,
   fetchSettings: false,
 };
@@ -47,7 +48,7 @@ const App = () => {
     store.notebookTarget || store.word,
     dispatch
   );
-  usePlaySound(store.soundToPlay, store.word, dispatch);
+  usePlaySound(store.audio, store.shouldPlay, dispatch);
 
   let isWordSaved = useMemo(
     () =>

@@ -38,9 +38,9 @@ const reducer: React.Reducer<AppState, Action> = (
     case "closeAll":
       return { ...prevState, isModalOpen: false, isMenuOpen: false };
     case "playSound":
-      return { ...prevState, soundToPlay: action.payload };
+      return { ...prevState, ...action.payload };
     case "soundPlayed":
-      return { ...prevState, soundToPlay: null };
+      return { ...prevState, shouldPlay: false };
     case "saveWord":
       return {
         ...prevState,

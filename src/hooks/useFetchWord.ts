@@ -1,5 +1,6 @@
 import { Dispatch, useEffect } from "react";
 import { getWord } from "../data";
+import getMediaUrl from "../utils/getMediaUrl";
 import { Action } from "../types";
 
 function useFetchWord(
@@ -21,9 +22,8 @@ function useFetchWord(
             return;
           }
           dispatch({ type: "initWord", payload: word });
-          if (autoplaySound) {
-            dispatch({ type: "playSound", payload: word.sound });
-          }
+          let audio = new Audio(getMediaUrl(word, word.sound));
+          dispatch({ type: "playSound", payload: { audio, shouldPlay: autoplaySound } });
         })();
       }
     },
